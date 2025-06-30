@@ -2,7 +2,7 @@ from fastapi import FastAPI, status
 from fastapi.responses import RedirectResponse
 from openai import OpenAI
 from pydantic import BaseModel, field_validator
-
+from models import load_text_model, generate_text
 
 class UserCreate(BaseModel):
     username: str
@@ -46,3 +46,9 @@ def chat_controller(prompt: str = "Inspire me"):
 
     statement = response.choices[0].message.content
     return {"statement": statement}
+
+@app.get("/generate/text")
+def serve_language_model_controller(prompt: str):
+    pipe = load_text_model()
+    output = generate_text(pipe, prompt)
+    return output

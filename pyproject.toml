@@ -7,8 +7,10 @@ requires-python = ">=3.12"
 dependencies = [
     "fastapi[standard]>=0.115.14",
     "openai>=1.93.0",
+    "streamlit>=1.46.1",
     "torch>=2.7.1",
     "torchaudio>=2.7.1",
     "torchvision>=0.22.1",
+    "transformers>=4.53.0",
     "uvicorn>=0.35.0",
 ]
